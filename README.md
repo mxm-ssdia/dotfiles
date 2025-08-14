@@ -27,6 +27,7 @@
  1 git 
  2 pkg manager according to ur os 
  3 nerd font 
+ 4 gnu stow (for symbolic links )
 
 ## setup (Manual)
  1 install terminal Ghosty
