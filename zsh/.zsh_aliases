@@ -1,0 +1,26 @@
+#---------------------Basic---------------------
+alias ll="ls -la"
+alias gs="git status"
+alias ..="cd .."
+
+#----------------bat---------------------------
+#sudo pacman -S bat
+
+export BAT_THEME="Solarized (dark)"
+
+#-----------------eza(ls)-----------------------
+alias ls="eza --color=always --long --git --no-filesize --icons=always --no-time --no-user --no-permissions"
+
+#--------------------fzf------------------------
+export FZF_CTRL_T_OPTS="--preview 'bat -n --color=always --line-range :500 {}'" #fzf + eza
+export FZF_ALT_C_OPTS="--preview 'eza -tree --color=always {} | head -200'"  #fzf + eze
+
+_fzf_comprun() {
+	local command=$1
+	shift
+
+	case "$command" in
+		cd)   fzf --preview 'eza -tree --color=always {} | head -200' "$@" ;;
+		*)    fzf --preview "--preview 'bat -n --color=always --line-range :500 {}'" "$@" ;;
+	esac
+}
