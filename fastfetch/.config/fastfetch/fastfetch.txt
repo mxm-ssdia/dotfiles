@@ -1,0 +1,8 @@
+# installation
+$ sudo pacman -S fastfetch
+
+# open everytime in new terminal
+$ echo "fastfetch" >> ~/.zshrc
+
+-paste the above line in cmd line without the $
+-if ur using my dotfiles there is already a line included in ~/.zshrc just uncomment it
