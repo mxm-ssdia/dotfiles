@@ -1,0 +1,80 @@
+# TPM ------------------------------------------------------------
+$ mkdir -p ~/.tmux/plugins/tpm
+$ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
+# List of plugins
+set -g @plugin 'tmux-plugins/tpm' # 1st plugin
+
+# Initialize TMUX plugin manager (keep this line at the very bottom)
+run '~/.tmux/plugins/tpm/tpm'
+
+# VIM & NVIM [tpope:vim-obsession]
+  # for vim
+  set -g @resurrect-strategy-vim 'session'
+  # for neovim
+  set -g @resurrect-strategy-nvim 'session'
+
+# TMUX ----------------------------------------------------------
+-SESSION
+  $ tmux [new session name 1]
+  $ tmux new -s <NAME> 
+
+  $ tmux ls [list session]
+  $ tmux kill-session [kill most recent session]
+  $ tmux kill-session -t <NAME> [kill specific session]
+
+  $ tmux a [attach to our most recent session]
+  $ tmux a -t <NAME> [attach to speciific session]
+  DETECH SESSION - PREFIX-d
+
+-WINDOW 
+  PREFIX + c [new window]
+  PREFIX + , [rename window]
+  PREFIX + & [kill current window]
+  ALT + h/l right left move [SWITCHING WINDOWS]
+
+-PANES
+-SPLIT
+    PREFIX + | for horizontal
+    PREFIX + - for vertical
+    PREFIX + m full size
+-SWITCH PANES WITH Alt
+    Alt + h/j/k/l for switching
+-RESIZING PANES 
+    PREFIX + h/j/k/l to resize
+
+# DEFAULT SHORTCUT------------------------------------------------
+
+-PREFIX + w [see eveything]
+-PREFIX + x [delete anything from PREFIX + w]
+-PREFIX = C-`
+-PREFIX + r reload config
+-COPY MODE
+    PREFIX + v copy mode on
+    PREFIX + y copy anything
+
+# PLUGINS SHORTCUT------------------------------------------------
+
+-TPM
+    PREFIX + : [tmux terminal with emacs from sensible]
+    PREFIX + I install plugin
+    PREFIX + U update plugin
+    PREFIX + alt + u uninstall or remove a plugin
+-SESSIONIZER
+    PREFIX + o
+    type annything [create new session]
+    C-t [show all sess/window in tree]
+    C-r [rename session]
+
+-RESSERECT----------------------
+    USE YARN > NPM
+    set -g @resurrect-processes '"~yarn watch"'
+    set -g @resurrect-processes '"~yarn watch->yarn watch"'
+
+    prefix + Ctrl-s - save
+    prefix + Ctrl-r - restore
+-CONTINUUM
+
+-
+
+
