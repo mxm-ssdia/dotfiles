@@ -79,6 +79,4 @@ run '~/.tmux/plugins/tpm/tpm'
     save session 15min interval
     [these settings are on :)]
 
--
-
 
