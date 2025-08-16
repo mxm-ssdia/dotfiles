@@ -67,7 +67,7 @@ run '~/.tmux/plugins/tpm/tpm'
     C-r [rename session]
     alt + backspace [kill sessions]
 
--RESSERECT----------------------
+-RESSERECT
     USE YARN > NPM
     set -g @resurrect-processes '"~yarn watch"'
     set -g @resurrect-processes '"~yarn watch->yarn watch"'
@@ -75,6 +75,9 @@ run '~/.tmux/plugins/tpm/tpm'
     prefix + Ctrl-s - save
     prefix + Ctrl-r - restore
 -CONTINUUM
+    auto restore session when open tmux
+    save session 15min interval
+    [these settings are on :)]
 
 -
 
