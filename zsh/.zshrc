@@ -28,7 +28,6 @@ zinit ice from"gh" as"program"   #tpm
 zinit light tmux-plugins/tpm	 #tpm
 
 
-
 #------------------------- Zsh plugins ------------------------------------
 
 zinit light zsh-users/zsh-completions          # completion
