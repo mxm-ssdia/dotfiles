@@ -65,6 +65,7 @@ run '~/.tmux/plugins/tpm/tpm'
     type annything [create new session]
     C-t [show all sess/window in tree]
     C-r [rename session]
+    alt + backspace
 
 -RESSERECT----------------------
     USE YARN > NPM
