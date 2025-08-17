@@ -57,8 +57,9 @@ read_only = " "
 ## SECOND LINE/ROW: Prompt
 # Prompt: param 2 └─
 [character]
-success_symbol = "[ ](#6791C9 bold)"
-error_symbol = "[ ](#B66467 bold)"
+success_symbol = "[❯](#f94dff bold)"
+error_symbol = "[#](#B66467 bold)"
+vicmd_symbol = '[❮](#987afb bold)'
 
 [line_break]
 disabled = false
