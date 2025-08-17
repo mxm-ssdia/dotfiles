@@ -57,3 +57,12 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
+-- use treesitter for folding
+vim.o.foldmethod = "expr"
+vim.o.foldexpr = "nvim_treesitter#foldexpr()"
+
+-- optional: start with all folds open
+vim.o.foldlevel = 99
+vim.o.foldlevelstart = 99
+vim.o.foldenable = true
+

@@ -1,3 +1,24 @@
+--[[
+    why treesittter?
+    #Syntax Highlighting & Indentation
+    #Text Objects
+    #Motions / Navigation
+    #Refactoring (plugin: nvim-treesitter-refactor)
+    #Playground (plugin: nvim-treesitter/playground)
+    #Incremental Selection
+    #Folding
+    #Query-based Extensions
+
+    FOLDING----
+        zc → close (fold) the block under cursor.
+        zo → open fold.
+        za → toggle fold.
+        zR → open all folds.
+        zM → close all folds.
+
+ ]]--
+
+
 return { 
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
@@ -49,10 +70,10 @@ return {
       -- node_incremental = "grn",   -- expand to next node
       -- scope_incremental = "grc",  -- expand to scope
       -- node_decremental = "grm",   -- shrink
-      init_selection = "<C-Space>",   -- start selection
-      node_incremental = "<C-Space>", -- expand to next node
-      scope_incremental = "<C-s>",    -- expand to scope
-      node_decremental = "<C-Backspace>", -- shrink
+      init_selection = "<Leader>ss",   -- start selection
+      node_incremental = "<Leader>ss", -- expand to next node
+      scope_incremental = "<Leader>sc",    -- expand to scope
+      node_decremental = "<Leader>sd", -- shrink
     },
   },
 
