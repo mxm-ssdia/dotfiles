@@ -10,6 +10,7 @@ background-opacity = 0.05
 # theme = Argonaut
 # window-padding-x = 2
 cursor-style = block
+cursor-style = block
 
  # To get the default values
 # ghostty +show-config --default --docs > ~/github/dotfiles-latest/ghostty/config-default
@@ -54,8 +55,6 @@ custom-shader = ./shaders/mnoise.glsl
 # custom-shader = shaders/water.glsl
 
 # custom-shader = /home/mousam/.config/ghostty/shaders/water.glsl
-
-# custom-shader = ./shaders/cursor_blaze_tapered.glsl
 
 # This can contain additional arguments to run the command with. If additional
 # arguments are provided, the command will be executed using `/bin/sh -c`.
