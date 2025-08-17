@@ -22,4 +22,5 @@ require('lazy').setup({
     require 'plugins.oil', -- file manager
     require 'plugins.buffer-line', -- only use for tabs >>>> buffers
     require 'plugins.lua-line', -- the status line 
+    require 'plugins.treesitter', -- better syntax highlighting
 })
