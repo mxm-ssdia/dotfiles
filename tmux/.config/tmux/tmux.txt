@@ -31,7 +31,7 @@ run '~/.tmux/plugins/tpm/tpm'
   PREFIX + c [new window]
   PREFIX + , [rename window]
   PREFIX + & [kill current window]
-  ALT + h/l right left move [SWITCHING WINDOWS]
+  ALT + Tab/Shift-Tab right left move [SWITCHING WINDOWS]
 
 -PANES
 -SPLIT
