@@ -66,3 +66,9 @@ vim.o.foldlevel = 99
 vim.o.foldlevelstart = 99
 vim.o.foldenable = true
 
+vim.opt.guicursor = {
+  "n-v-c:block",  -- Normal, Visual, Command: block
+  "i:blinkon1",   -- Insert: still block, but with blink
+  "r:hor20",      -- Replace: thin horizontal line
+}
+

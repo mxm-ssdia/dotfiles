@@ -20,8 +20,10 @@ rtp:prepend(lazypath)
 -- NOTE: Here is where you install your plugins.
 require('lazy').setup({
     require 'plugins.oil', -- file manager
-    require 'plugins.oil-git', -- file manager & git sign
-    require 'plugins.buffer-line', -- only use for tabs >>>> buffers
-    require 'plugins.lua-line', -- the status line 
+    require 'plugins.oil-git', -- git sign for oil
+    require 'plugins.buffer-line', -- only use for tabs no buffers
+    require 'plugins.lua-line', -- the status line  inset visula etc
     require 'plugins.treesitter', -- better syntax highlighting
-})
+    require 'plugins.telescope', -- fuzzy finder 
+}
+)
