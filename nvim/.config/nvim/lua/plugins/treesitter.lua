@@ -29,6 +29,8 @@
 
         :h nvim-treesitter-commands for a list of all available commands.
 
+	dependent file - telescope.lua for a key map
+
 
  ]]
 --
@@ -44,8 +46,8 @@ return {
 		config = function()
 			require("nvim-treesitter.configs").setup({
 				ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "markdown", "markdown_inline" }, --MODULES INSTALL
-				sync_install = false,                                           -- Install parsers synchronously (only applied to `ensure_installed`)
-				auto_install = true,                                            -- install missing parsers
+				sync_install = false, -- Install parsers synchronously (only applied to `ensure_installed`)
+				auto_install = true, -- install missing parsers
 				-- ignore_install = { "javascript" }, -- List of parsers to ignore installing (or "all")
 
 				textobjects = { -- TEXT OBJECTS###############
@@ -90,7 +92,7 @@ return {
 						scope_incremental = "<Leader>sc", -- expand to scope
 						node_decremental = "<Leader>sd", -- shrink
 					},
-				},      --IC end
+				}, --IC end
 
 				--##we wont use this we will use lsp for this stuff
 				-- refactor = { --refactor start
@@ -142,12 +144,12 @@ return {
 	},
 
 	-- Treesitter Playground (for debugging/learning AST)
-	{ "nvim-treesitter/playground",             cmd = "TSPlaygroundToggle" }, -- :TSPlaygroundToggle
-	{ "hiphish/rainbow-delimiters.nvim" },                 --rainbow color brackets
-	{ "nvim-treesitter/nvim-treesitter-context" },         --sticky fun class header at top
-	{ "windwp/nvim-ts-autotag" },                          --auto rename html/jsx tag
-	{ "andymass/vim-matchup" },                            --enhanced matching if else
-	{ "numToStr/Comment.nvim",                  opts = {} }, --samter comment aware of AST
+	{ "nvim-treesitter/playground", cmd = "TSPlaygroundToggle" }, -- :TSPlaygroundToggle
+	{ "hiphish/rainbow-delimiters.nvim" }, --rainbow color brackets
+	{ "nvim-treesitter/nvim-treesitter-context" }, --sticky fun class header at top
+	{ "windwp/nvim-ts-autotag" }, --auto rename html/jsx tag
+	{ "andymass/vim-matchup" }, --enhanced matching if else
+	{ "numToStr/Comment.nvim", opts = {} }, --samter comment aware of AST
 
 	--[[
    Place cursor on a function → run :echo nvim_treesitter#statusline(90)
