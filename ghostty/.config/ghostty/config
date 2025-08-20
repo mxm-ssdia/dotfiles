@@ -28,7 +28,7 @@ keybind = super+k=clear_screen
 # custom-shader = shaders/inside-the-matrix.glsl
 # custom-shader = shaders/matrix-hallway.glsl
 # custom-shader = shaders/just-snow.glsl
-custom-shader = ./shaders/mnoise.glsl
+# custom-shader = ./shaders/mnoise.glsl
 # custom-shader = shaders/negative.glsl
 
 # stars moving fast in light years > > galaxy 
