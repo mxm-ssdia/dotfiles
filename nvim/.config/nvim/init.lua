@@ -28,6 +28,7 @@ require("lazy").setup({
 	require("plugins.alpha"), -- greeter screen
 	require("plugins.indent-blank"), -- the | lines that tells us the indent
 	require("plugins.misc"), -- small standalone plugins
+	require("plugins.theme"), -- small standalone plugins
 
 	--COUPLES PLUGINS need each other
 	require("plugins.treesitter"), -- better syntax highlighting
@@ -36,6 +37,7 @@ require("lazy").setup({
 	require("plugins.lsp.lsp-dev"), -- lsp for lua
 	-- require 'plugins.nvm-cmp' -- completion for all lsp buff snip etc
 	require("plugins.blink-cmp"), -- completion for all lsp buff snip etc
+	require("plugins.lsp.eplace-file"), -- lsp for lua
 
 	-- STUPID PLUGINS I LIKE :)
 	require("plugins.fuck-u.cursor-smear"), -- cursor animation kela !!!

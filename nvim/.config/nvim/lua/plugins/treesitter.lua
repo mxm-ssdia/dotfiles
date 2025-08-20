@@ -146,7 +146,7 @@ return {
 	-- Treesitter Playground (for debugging/learning AST)
 	{ "nvim-treesitter/playground", cmd = "TSPlaygroundToggle" }, -- :TSPlaygroundToggle
 	{ "hiphish/rainbow-delimiters.nvim" }, --rainbow color brackets
-	{ "nvim-treesitter/nvim-treesitter-context" }, --sticky fun class header at top
+	-- { "nvim-treesitter/nvim-treesitter-context" }, --sticky fun class header at top
 	{ "windwp/nvim-ts-autotag" }, --auto rename html/jsx tag
 	{ "andymass/vim-matchup" }, --enhanced matching if else
 	{ "numToStr/Comment.nvim", opts = {} }, --samter comment aware of AST

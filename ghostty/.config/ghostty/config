@@ -6,7 +6,7 @@
 
 font-family = MesloLGS Nerd Font Mono
 font-size = 11
-background-opacity = 0.05
+background-opacity = 0
 # theme = Argonaut
 # window-padding-x = 2
 cursor-style = block
@@ -28,7 +28,7 @@ cursor-style = block
 config-file = ghostty-theme
 
 # fish eye > green retro
-custom-shader = shaders/bettercrt.glsl 
+# custom-shader = shaders/bettercrt.glsl 
 # custom-shader = shaders/retro-terminal.glsl
 
 # EFFECTS glow > glitch > light glitch > spotlight
@@ -41,7 +41,7 @@ custom-shader = shaders/bettercrt.glsl
 # custom-shader = shaders/gears-and-belts.glsl
 # custom-shader = shaders/inside-the-matrix.glsl
 # custom-shader = shaders/matrix-hallway.glsl
-custom-shader = shaders/just-snow.glsl
+# custom-shader = shaders/just-snow.glsl
 custom-shader = ./shaders/mnoise.glsl
 # custom-shader = shaders/negative.glsl
 

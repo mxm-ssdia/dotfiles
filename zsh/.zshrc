@@ -85,20 +85,20 @@ eval "$(fzf --zsh)"         #fzf
 
 
 # Auto-create / attach new tmux session when opening Ghostty
-if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
-    # Ask for a session name interactively
-    if [ -t 0 ]; then  # only prompt if interactive shell
-        read -p "Enter tmux session name (leave blank for random): " SESSION_NAME
-    fi
-
-    # Fallback to random name if blank or non-interactive
-    if [ -z "$SESSION_NAME" ]; then
-        SESSION_NAME="session_$(date +%s%N | sha256sum | head -c 6)"
-    fi
-
-    # Create and attach new session on the same tmux server
-    exec tmux new-session -s "$SESSION_NAME"
-fi
+# if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
+#     # Ask for a session name interactively
+#     if [ -t 0 ]; then  # only prompt if interactive shell
+#         read -p "Enter tmux session name (leave blank for random): " SESSION_NAME
+#     fi
+#
+#     # Fallback to random name if blank or non-interactive
+#     if [ -z "$SESSION_NAME" ]; then
+#         SESSION_NAME="session_$(date +%s%N | sha256sum | head -c 6)"
+#     fi
+#
+#     # Create and attach new session on the same tmux server
+#     exec tmux new-session -s "$SESSION_NAME"
+# fi
 
 
 
