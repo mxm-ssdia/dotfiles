@@ -42,4 +42,7 @@ require("lazy").setup({
 	-- STUPID PLUGINS I LIKE :)
 	require("plugins.fuck-u.cursor-smear"), -- cursor animation kela !!!
 	require("plugins.fuck-u.lineNO-smear"), -- smear the line no we are on
+
+	--USEFUUl PLUGINS
+	require("plugins.useful.md-view"), -- to view makdown
 })
