@@ -12,10 +12,10 @@ return {
   dependencies = {
     -- NOTE: `opts = {}` is the same as calling `require('mason').setup({})`
     { 'mason-org/mason.nvim', opts = {} }, --install lsp servers in nvim
-    'mason-org/mason-lspconfig.nvim', -- bridges the gap btw mason and lspconfig
+    'mason-org/mason-lspconfig.nvim',      -- bridges the gap btw mason and lspconfig
     'WhoIsSethDaniel/mason-tool-installer.nvim',
-    { 'j-hui/fidget.nvim', opts = {} }, -- Useful status updates for LSP.
-    'saghen/blink.cmp', -- Allows extra capabilities provided by blink.cmp
+    { 'j-hui/fidget.nvim',    opts = {} }, -- Useful status updates for LSP.
+    'saghen/blink.cmp',                    -- Allows extra capabilities provided by blink.cmp
   },
   config = function()
     -- `:help lsp-vs-treesitter`
@@ -29,15 +29,15 @@ return {
         end
 
         --NORMAL VIM POWERED
-        map('grn', vim.lsp.buf.rename, '[R]e[n]ame') -- Rename the variable under your cursor.
-        map('gra', vim.lsp.buf.code_action, '[G]oto Code [A]ction', { 'n', 'x' }) -- usually your cursor needs to be on top of an error
-        map('grD', vim.lsp.buf.declaration, '[G]oto [D]eclaration') -- in C this would take you to the header. not Goto Definition, this is Goto Declaration.
-        map('grk', vim.lsp.buf.hover, '[G]oto [H]over') --go to hover
+        map('grn', vim.lsp.buf.rename, '[R]e[n]ame')                                                    -- Rename the variable under your cursor.
+        map('gra', vim.lsp.buf.code_action, '[G]oto Code [A]ction', { 'n', 'x' })                       -- usually your cursor needs to be on top of an error
+        map('grD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')                                     -- in C this would take you to the header. not Goto Definition, this is Goto Declaration.
+        map('grk', vim.lsp.buf.hover, '[G]oto [H]over')                                                 --go to hover
         --TELESCOPE POWERED
-        map('grr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences') -- Find references for the word under your cursor.
-        map('gri', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation') -- Jump to the implementation of the word under your cursor.
-        map('grd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition') -- 	--  To jump back, press <C-t>.
-        map('gO', require('telescope.builtin').lsp_document_symbols, 'Open Document Symbols') -- Fuzzy find all the variables, functions, types,in your current document.
+        map('grr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')                  -- Find references for the word under your cursor.
+        map('gri', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')         -- Jump to the implementation of the word under your cursor.
+        map('grd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')                 -- 	--  To jump back, press <C-t>.
+        map('gO', require('telescope.builtin').lsp_document_symbols, 'Open Document Symbols')           -- Fuzzy find all the variables, functions, types,in your current document.
         map('gW', require('telescope.builtin').lsp_dynamic_workspace_symbols, 'Open Workspace Symbols') -- Fuzzy find all the symbols in your current workspace.searches over your entire project
 
         -- highlight references under cursor
@@ -175,7 +175,18 @@ return {
       --
       -- But for many setups, the LSP (`ts_ls`) will work just fine
       ts_ls = {},
-      --
+      -- QML/Qt LSP
+      qmlls = {            -- <- just a table of options
+        cmd = { 'qmlls' }, -- path to qmlls binary
+        filetypes = { 'qml', 'js' },
+        root_dir = require('lspconfig').util.root_pattern('CMakeLists.txt', '.git'),
+        settings = {
+          QML = {
+            lint = true,
+            codeModel = true,
+          },
+        },
+      },
 
       lua_ls = {
         -- cmd = { ... },
@@ -203,14 +214,14 @@ return {
 
     --this connects Mason-installed servers with nvim-lspconfig
     require('mason-lspconfig').setup { --lsp config start
-      ensure_installed = {}, -- explicitly set to an empty table (Kickstart populates installs via mason-tool-installer)
+      ensure_installed = {},           -- explicitly set to an empty table (Kickstart populates installs via mason-tool-installer)
       automatic_installation = false,
       handlers = {
         function(server_name)
           local server = servers[server_name] or {}
           server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {}) -- Merge capabilities
-          server.on_attach = on_attach -- 🔥 Attach our custom on_attach here
-          require('lspconfig')[server_name].setup(server) --Useful when disablingcertain features of an LSP (for example, turning off formatting for ts_ls)
+          server.on_attach = on_attach                                                                    -- 🔥 Attach our custom on_attach here
+          require('lspconfig')[server_name].setup(server)                                                 --Useful when disablingcertain features of an LSP (for example, turning off formatting for ts_ls)
         end,
       },
     } -- lsp config end
