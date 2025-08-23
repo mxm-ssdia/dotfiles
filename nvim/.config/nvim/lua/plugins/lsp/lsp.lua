@@ -202,6 +202,8 @@ return {
           },
         },
       },
+
+      nil_ls = {},
     } -- lsp inst end
 
     ---- Tools Mason should install
