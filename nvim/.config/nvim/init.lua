@@ -21,7 +21,7 @@ require('lazy').setup {
   --STANDALONE PLUGINS need no dependencies
   require 'plugins.single.oil', -- file manager
   require 'plugins.single.alpha', -- greeter screen
-  require 'plugins.single.indedt-blank', -- the | lines that tells us the indent
+  require 'plugins.single.indent-blank', -- the | lines that tells us the indent
   require 'plugins.single.misc', -- small standalone plugins
   require 'plugins.single.vague', --  be depressed colorscheme
 
