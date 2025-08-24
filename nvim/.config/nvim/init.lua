@@ -19,29 +19,28 @@ rtp:prepend(lazypath)
 -- NOTE: Here is where you install your plugins.
 require('lazy').setup {
   --STANDALONE PLUGINS need no dependencies
-  require 'plugins.oil',          -- file manager
-  require 'plugins.oil-git',      -- git sign for oil
-  require 'plugins.buffer-line',  -- only use for tabs no buffers
-  require 'plugins.lua-line',     -- the status line  inset visula etc
-  require 'plugins.null-ls',      --  auto formating
-  require 'plugins.gitsigns',     -- git signs on buffers
-  require 'plugins.alpha',        -- greeter screen
-  require 'plugins.indent-blank', -- the | lines that tells us the indent
-  require 'plugins.misc',         -- small standalone plugins
-  require 'plugins.theme',        -- small standalone plugins
+  require 'plugins.single.oil', -- file manager
+  require 'plugins.single.oil-git', -- git sign for oil
+  require 'plugins.single.buffer-line', -- only use for tabs no buffers
+  require 'plugins.single.lua-line', -- the status line  inset visula etc
+  require 'plugins.single.gitsigns', -- git signs on buffers
+  require 'plugins.single.alpha', -- greeter screen
+  require 'plugins.single.indent-blank', -- the | lines that tells us the indent
+  require 'plugins.single.misc', -- small standalone plugins
+  require 'plugins.single.theme', -- small standalone plugins
 
   --COUPLES PLUGINS need each other
-  require 'plugins.treesitter',      -- better syntax highlighting
-  require 'plugins.telescope',       -- fuzzy finder
-  require 'plugins.lsp.lsp',         -- lsp integerationn
-  require 'plugins.lsp.lsp-dev',     -- lsp for lua
+  require 'plugins.treesitter', -- better syntax highlighting
+  require 'plugins.telescope', -- fuzzy finder
+  require 'plugins.lsp.lsp', -- lsp integerationn
+  require 'plugins.lsp.lsp-dev', -- lsp for lua
+  require 'plugins.null-ls', --  auto formating
   -- require 'plugins.nvm-cmp' -- completion for all lsp buff snip etc
-  require 'plugins.blink-cmp',       -- completion for all lsp buff snip etc
+  require 'plugins.blink-cmp', -- completion for all lsp buff snip etc
   require 'plugins.lsp.eplace-file', -- lsp for lua
 
   -- STUPID PLUGINS I LIKE :)
-  require 'plugins.fuck-u.cursor-smear', -- cursor animation kela !!!
-  require 'plugins.fuck-u.lineNO-smear', -- smear the line no we are on
+  require 'plugins.fuck-u.smear', -- cursor animation kela !!!
 
   --USEFUUl PLUGINS
   require 'plugins.useful.md-view', -- to view makdown

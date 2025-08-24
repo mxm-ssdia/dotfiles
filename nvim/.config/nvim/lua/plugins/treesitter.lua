@@ -37,17 +37,17 @@
 
 return {
 	{
-		"nvim-treesitter/nvim-treesitter", --main link for treesitter
-		build = ":TSUpdate", --make sure installed parsers are updated to the latest version
+		'nvim-treesitter/nvim-treesitter', --main link for treesitter
+		build = ':TSUpdate',   --make sure installed parsers are updated to the latest version
 		dependencies = {
-			"nvim-treesitter/nvim-treesitter-textobjects",
-			"nvim-treesitter/nvim-treesitter-refactor",
+			'nvim-treesitter/nvim-treesitter-textobjects',
+			'nvim-treesitter/nvim-treesitter-refactor',
 		},
 		config = function()
-			require("nvim-treesitter.configs").setup({
-				ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "markdown", "markdown_inline" }, --MODULES INSTALL
-				sync_install = false, -- Install parsers synchronously (only applied to `ensure_installed`)
-				auto_install = true, -- install missing parsers
+			require('nvim-treesitter.configs').setup {
+				ensure_installed = { 'c', 'lua', 'vim', 'vimdoc', 'query', 'markdown', 'markdown_inline' }, --MODULES INSTALL
+				sync_install = false,                                               -- Install parsers synchronously (only applied to `ensure_installed`)
+				auto_install = true,                                                -- install missing parsers
 				-- ignore_install = { "javascript" }, -- List of parsers to ignore installing (or "all")
 
 				textobjects = { -- TEXT OBJECTS###############
@@ -55,31 +55,31 @@ return {
 						enable = true,
 						lookahead = true, -- jump forward to textobj
 						keymaps = {
-							["af"] = "@function.outer",
-							["if"] = "@function.inner",
-							["ac"] = "@class.outer",
-							["ic"] = "@class.inner",
+							['af'] = '@function.outer',
+							['if'] = '@function.inner',
+							['ac'] = '@class.outer',
+							['ic'] = '@class.inner',
 						},
 					},
 					move = {
 						enable = true,
 						set_jumps = true,
 						goto_next_start = {
-							["]f"] = "@function.outer",
-							["]c"] = "@class.outer",
+							[']f'] = '@function.outer',
+							[']c'] = '@class.outer',
 						},
 						goto_previous_start = {
-							["[f"] = "@function.outer",
-							["[c"] = "@class.outer",
+							['[f'] = '@function.outer',
+							['[c'] = '@class.outer',
 						},
 					},
 					swap = {
 						enable = true,
 						swap_next = {
-							["<leader>a"] = "@parameter.inner",
+							['<leader>a'] = '@parameter.inner',
 						},
 						swap_previous = {
-							["<leader>A"] = "@parameter.inner",
+							['<leader>A'] = '@parameter.inner',
 						},
 					},
 				},
@@ -87,12 +87,12 @@ return {
 				incremental_selection = { --IC start
 					enable = true,
 					keymaps = {
-						init_selection = "<Leader>ss", -- start selection
-						node_incremental = "<Leader>ss", -- expand to next node
-						scope_incremental = "<Leader>sc", -- expand to scope
-						node_decremental = "<Leader>sd", -- shrink
+						init_selection = '<Leader>ss', -- start selection
+						node_incremental = '<Leader>ss', -- expand to next node
+						scope_incremental = '<Leader>sc', -- expand to scope
+						node_decremental = '<Leader>sd', -- shrink
 					},
-				}, --IC end
+				},            --IC end
 
 				--##we wont use this we will use lsp for this stuff
 				-- refactor = { --refactor start
@@ -133,7 +133,7 @@ return {
 					-- Instead of true it can also be a list of languages
 					additional_vim_regex_highlighting = true,
 				}, --HL end
-			})
+			}
 
 			-- 🔥 Custom highlight overrides
 			-- :h treesitter-highlight-groups for details.
@@ -144,12 +144,12 @@ return {
 	},
 
 	-- Treesitter Playground (for debugging/learning AST)
-	{ "nvim-treesitter/playground", cmd = "TSPlaygroundToggle" }, -- :TSPlaygroundToggle
-	{ "hiphish/rainbow-delimiters.nvim" }, --rainbow color brackets
+	{ 'nvim-treesitter/playground',     cmd = 'TSPlaygroundToggle' }, -- :TSPlaygroundToggle
+	{ 'hiphish/rainbow-delimiters.nvim' },                  --rainbow color brackets
 	-- { "nvim-treesitter/nvim-treesitter-context" }, --sticky fun class header at top
-	{ "windwp/nvim-ts-autotag" }, --auto rename html/jsx tag
-	{ "andymass/vim-matchup" }, --enhanced matching if else
-	{ "numToStr/Comment.nvim", opts = {} }, --samter comment aware of AST
+	{ 'windwp/nvim-ts-autotag' },                           --auto rename html/jsx tag
+	{ 'andymass/vim-matchup' },                             --enhanced matching if else
+	{ 'numToStr/Comment.nvim',          opts = {} },        --samter comment aware of AST
 
 	--[[
    Place cursor on a function → run :echo nvim_treesitter#statusline(90)
