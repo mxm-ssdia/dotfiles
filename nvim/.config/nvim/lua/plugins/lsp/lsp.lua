@@ -11,11 +11,7 @@ return {
   'neovim/nvim-lspconfig', --:help lsp-quickstart for all servers
   dependencies = {
     -- NOTE: `opts = {}` is the same as calling `require('mason').setup({})`
-    { 'mason-org/mason.nvim', opts = {} }, --install lsp servers in nvim
-    'mason-org/mason-lspconfig.nvim', -- bridges the gap btw mason and lspconfig
-    'WhoIsSethDaniel/mason-tool-installer.nvim',
     { 'j-hui/fidget.nvim', opts = {} }, -- Useful status updates for LSP.
-    'saghen/blink.cmp', -- Allows extra capabilities provided by blink.cmp
   },
   config = function()
     vim.api.nvim_create_autocmd('LspAttach', { -- run when an lsp attaches to a particular buffer
@@ -27,15 +23,15 @@ return {
         end
 
         --NORMAL VIM POWERED
-        map('grn', vim.lsp.buf.rename, '[R]e[n]ame') -- Rename the variable under your cursor.
-        map('gra', vim.lsp.buf.code_action, '[G]oto Code [A]ction', { 'n', 'x' }) -- usually your cursor needs to be on top of an error
-        map('grD', vim.lsp.buf.declaration, '[G]oto [D]eclaration') -- in C this would take you to the header. not Goto Definition, this is Goto Declaration.
-        map('grk', vim.lsp.buf.hover, '[G]oto [H]over') --go to hover
+        map('grn', vim.lsp.buf.rename, '[R]e[n]ame')                                                    -- Rename the variable under your cursor.
+        map('gra', vim.lsp.buf.code_action, '[G]oto Code [A]ction', { 'n', 'x' })                       -- usually your cursor needs to be on top of an error
+        map('grD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')                                     -- in C this would take you to the header. not Goto Definition, this is Goto Declaration.
+        map('grk', vim.lsp.buf.hover, '[G]oto [H]over')                                                 --go to hover
         --TELESCOPE POWERED
-        map('grr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences') -- Find references for the word under your cursor.
-        map('gri', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation') -- Jump to the implementation of the word under your cursor.
-        map('grd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition') -- 	--  To jump back, press <C-t>.
-        map('gO', require('telescope.builtin').lsp_document_symbols, 'Open Document Symbols') -- Fuzzy find all the variables, functions, types,in your current document.
+        map('grr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')                  -- Find references for the word under your cursor.
+        map('gri', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')         -- Jump to the implementation of the word under your cursor.
+        map('grd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')                 -- 	--  To jump back, press <C-t>.
+        map('gO', require('telescope.builtin').lsp_document_symbols, 'Open Document Symbols')           -- Fuzzy find all the variables, functions, types,in your current document.
         map('gW', require('telescope.builtin').lsp_dynamic_workspace_symbols, 'Open Workspace Symbols') -- Fuzzy find all the symbols in your current workspace.searches over your entire project
 
         -- highlight references under cursor
@@ -78,95 +74,37 @@ return {
 
     -- :help vim.diaggnostic.opts
     vim.diagnostic.config {
-      signs = true, -- E/W/I/H in the gutter
-      virtual_text = true, -- inline text
-      underline = true, -- squiggly underline
+      signs = true,          -- E/W/I/H in the gutter
+      virtual_text = true,   -- inline text
+      underline = true,      -- squiggly underline
       update_in_insert = false,
       severity_sort = false, -- not sorted by severity
     }
 
-    --  When you add blink.cmp, luasnip, etc. Neovim now has *more* capabilities.
-    local capabilities = require('blink.cmp').get_lsp_capabilities()
+    -- installing lsp servers also we get formatters wwe want to diable it
+    -- as none ls takes care of that
 
-    -- Function that runs when an LSP attaches to a buffer
-    local on_attach = function(client, bufnr)
-      -- Example: disable formatting if you want external tools (prettier, stylua, etc.)
-      if client.name == 'ts_ls' or client.name == 'lua_ls' then --stylua takes care
+    local on_attach = function(client, bufnr) --buff attch start
+      -- Disable LSP formatting if we’re using none-ls
+      if
+          client.name == 'tsserver'
+          or client.name == 'lua_ls'
+          or client.name == 'jsonls'
+          or client.name == 'html'
+          or client.name == 'cssls'
+      then
         client.server_capabilities.documentFormattingProvider = false
+        client.server_capabilities.documentRangeFormattingProvider = false
       end
 
-      -- buffer-local keymaps attach on everry lsp buff
-      -- local opts = { buffer = bufnr }
-
-      -- ===== Optional: inlay hints (if supported) =====
-      if client.supports_method 'textDocument/inlayHint' then
-        vim.lsp.inlay_hint(bufnr, true)
-      end
-    end
-
-    local servers = { -- server ins start
-      -- clangd = {},
-      -- gopls = {},
-      -- pyright = {},
-      -- rust_analyzer = {},
-      -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
+      -- Example: set keymaps for LSP
+      -- local bufmap = function(mode, lhs, rhs, desc)
+      --   vim.keymap.set(mode, lhs, rhs, { buffer = bufnr, desc = desc })
+      -- end
       --
-      -- Some languages (like typescript) have entire language plugins that can be useful:
-      --    https://github.com/pmizio/typescript-tools.nvim
-      --
-      -- But for many setups, the LSP (`ts_ls`) will work just fine
-      ts_ls = {},
-      -- QML/Qt LSP
-      qmlls = { -- <- just a table of options
-        cmd = { 'qmlls' }, -- path to qmlls binary
-        filetypes = { 'qml', 'js' },
-        root_dir = require('lspconfig').util.root_pattern('CMakeLists.txt', '.git'),
-        settings = {
-          QML = {
-            lint = true,
-            codeModel = true,
-          },
-        },
-      },
-
-      lua_ls = {
-        -- cmd = { ... },
-        -- filetypes = { ... },
-        -- capabilities = {},
-        settings = {
-          Lua = {
-            completion = {
-              callSnippet = 'Replace',
-            },
-            -- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
-            -- diagnostics = { disable = { 'missing-fields' } },
-          },
-        },
-      },
-
-      nil_ls = {},
-    } -- lsp inst end
-
-    ---- Tools Mason should install
-    local ensure_installed = vim.tbl_keys(servers or {})
-    vim.list_extend(ensure_installed, {
-      'stylua', -- Used to format Lua code
-    })
-    --Ensures that all servers you defined in servers are automatically installed.
-    require('mason-tool-installer').setup { ensure_installed = ensure_installed }
-
-    --this connects Mason-installed servers with nvim-lspconfig
-    require('mason-lspconfig').setup { --lsp config start
-      ensure_installed = {}, -- explicitly set to an empty table (Kickstart populates installs via mason-tool-installer)
-      automatic_installation = false,
-      handlers = {
-        function(server_name)
-          local server = servers[server_name] or {}
-          server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {}) -- Merge capabilities
-          server.on_attach = on_attach -- 🔥 Attach our custom on_attach here
-          require('lspconfig')[server_name].setup(server) --Useful when disablingcertain features of an LSP (for example, turning off formatting for ts_ls)
-        end,
-      },
-    } -- lsp config end
+      -- bufmap('n', 'gd', vim.lsp.buf.definition, 'Go to definition')
+      -- bufmap('n', 'K', vim.lsp.buf.hover, 'Hover info')
+      -- bufmap('n', '<leader>rn', vim.lsp.buf.rename, 'Rename symbol')
+    end -- buff attach end
   end,
 }
