@@ -41,4 +41,33 @@ return {
       require('colorizer').setup()
     end,
   },
+  {
+    'sphamba/smear-cursor.nvim',
+    opts = {
+      stiffness = 0.5,
+      trailing_stiffness = 0.5,
+      distance_stop_animating = 0.5,
+      never_draw_over_target = false,
+    },
+  },
+  {
+    'gen740/SmoothCursor.nvim',
+    config = function()
+      require('smoothcursor').setup {
+        autostart = true,
+        cursor = '', -- or any character
+        texthl = 'SmoothCursor',
+        linehl = nil,
+        fancy = {
+          enable = true, -- "snake" style
+          head = { cursor = '▷', texthl = 'SmoothCursor' },
+          body = {
+            { cursor = '', texthl = 'SmoothCursor' },
+            { cursor = '●', texthl = 'SmoothCursor' },
+            { cursor = '•', texthl = 'SmoothCursor' },
+          },
+        },
+      }
+    end,
+  },
 }
