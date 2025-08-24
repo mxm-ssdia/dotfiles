@@ -19,23 +19,23 @@ rtp:prepend(lazypath)
 -- NOTE: Here is where you install your plugins.
 require('lazy').setup {
   --STANDALONE PLUGINS need no dependencies
-  require 'plugins.single.oil', -- file manager
-  require 'plugins.single.alpha', -- greeter screen
+  require 'plugins.single.oil',          -- file manager
+  require 'plugins.single.alpha',        -- greeter screen
   require 'plugins.single.indent-blank', -- the | lines that tells us the indent
-  require 'plugins.single.misc', -- small standalone plugins
-  require 'plugins.single.vague', --  be depressed colorscheme
+  require 'plugins.single.misc',         -- small standalone plugins
+  require 'plugins.single.vague',        --  be depressed colorscheme
 
   --COUPLES PLUGINS need each other
-  require 'plugins.treesitter', -- better syntax highlighting
-  require 'plugins.telescope', -- fuzzy finder
+  require 'plugins.treesitter',  -- better syntax highlighting
+  require 'plugins.telescope',   -- fuzzy finder
   require 'plugins.lsp.lsp-dev', -- lsp for lua
   --lsp
-  require 'plugins.lsp.lsp', -- lsp main
+  require 'plugins.lsp.lsp',     -- lsp main
   require 'plugins.lsp.servers', -- lsp lang setup
-  require 'plugins.lsp.mason', -- lsp lang servers install here
+  require 'plugins.lsp.mason',   -- lsp lang servers install here
 
-  require 'plugins.null-ls', --  auto formating + download formatters
-  require 'plugins.blink-cmp', -- completion for all lsp buff snip etc
+  require 'plugins.null-ls',     --  auto formating + download formatters
+  require 'plugins.blink-cmp',   -- completion for all lsp buff snip etc
 
   --USEFUUl PLUGINS
   require 'plugins.useful.md-view', -- to view makdown
