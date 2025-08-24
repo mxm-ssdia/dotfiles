@@ -18,11 +18,11 @@ return {
         return vim.fn.executable 'make' == 1
       end,
     },
-    { 'nvim-telescope/telescope-ui-select.nvim' },                     -- better vim.ui.select
+    { 'nvim-telescope/telescope-ui-select.nvim' },                                -- better vim.ui.select
     { 'nvim-tree/nvim-web-devicons',            enabled = vim.g.have_nerd_font }, -- for icons nerd font must be install
-    'nvim-treesitter/nvim-treesitter',                                 -- for query / playground / fun classes etc
+    'nvim-treesitter/nvim-treesitter',                                            -- for query / playground / fun classes etc
 
-    'nvim-telescope/telescope-file-browser.nvim',                      -- File explorer inside telescope
+    'nvim-telescope/telescope-file-browser.nvim',                                 -- File explorer inside telescope
     -- "nvim-telescope/telescope-project.nvim",     -- Project switching
     -- "nvim-telescope/telescope-dap.nvim",         -- Debug adapter integration
 
