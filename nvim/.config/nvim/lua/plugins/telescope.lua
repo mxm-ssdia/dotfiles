@@ -1,8 +1,6 @@
 --[[
-
     install ripgrep for live grep
     -treesitter dependent for a single keymap
-
 ]]
 --
 
@@ -10,21 +8,21 @@ return {
   'nvim-telescope/telescope.nvim', --install telescope
   event = 'VimEnter',
 
-  dependencies = { -- dep start
+  dependencies = {           -- dep start
     'nvim-lua/plenary.nvim', -- required u got it
     {
       -- native telescope sorter impove sorter performance
       'nvim-telescope/telescope-fzf-native.nvim',
-      build = 'make', -- run cmd when plugin = installled not when nvim startup
+      build = 'make',   -- run cmd when plugin = installled not when nvim startup
       cond = function() -- cond if plugin should be install & loaded
         return vim.fn.executable 'make' == 1
       end,
     },
-    { 'nvim-telescope/telescope-ui-select.nvim' }, -- better vim.ui.select
-    { 'nvim-tree/nvim-web-devicons', enabled = vim.g.have_nerd_font }, -- for icons nerd font must be install
-    'nvim-treesitter/nvim-treesitter', -- for query / playground / fun classes etc
+    { 'nvim-telescope/telescope-ui-select.nvim' },                     -- better vim.ui.select
+    { 'nvim-tree/nvim-web-devicons',            enabled = vim.g.have_nerd_font }, -- for icons nerd font must be install
+    'nvim-treesitter/nvim-treesitter',                                 -- for query / playground / fun classes etc
 
-    'nvim-telescope/telescope-file-browser.nvim', -- File explorer inside telescope
+    'nvim-telescope/telescope-file-browser.nvim',                      -- File explorer inside telescope
     -- "nvim-telescope/telescope-project.nvim",     -- Project switching
     -- "nvim-telescope/telescope-dap.nvim",         -- Debug adapter integration
 
@@ -46,12 +44,12 @@ return {
       vim.notify('Telescope not found!', vim.log.levels.WARN)
       return
     end
-
     --  :Telescope help_tags
     -- See `:help telescope` and `:help telescope.setup()`
     telescope.setup {
 
       defaults = { -- defaults start
+
         prompt_prefix = '   ', -- search icon
         selection_caret = ' ',
         path_display = { 'truncate' }, --smart/truncate
@@ -62,10 +60,10 @@ return {
             ['<C-k>'] = actions.move_selection_previous,
             ['<C-q>'] = actions.smart_send_to_qflist + actions.open_qflist,
           },
-        }, --maapping end
+        },                         --maapping end
 
         file_ignore_patterns = {}, -- clear ignores
-        vimgrep_arguments = { -- fro live grep and grep string
+        vimgrep_arguments = {      -- fro live grep and grep string
           'rg',
           '--color=never',
           '--no-heading',
@@ -73,26 +71,29 @@ return {
           '--line-number',
           '--column',
           '--smart-case',
-          '--hidden', -- 👈 always search hidden files
+          '--hidden',    -- 👈 always search hidden files
           '--no-ignore', -- 👈 don’t respect .gitignore
         },
         -- mappings = {
         --   i = { ['<c-enter>'] = 'to_fuzzy_refine' },
         -- },
-      }, --default end
+      },          --default end
 
       pickers = { -- pickers start
-        find_files = { --for find files
-          theme = 'dropdown',
-          -- theme = "get_cursor",
-          -- theme = "get_ivy",
-          hidden = true, -- show dotfiles
-          no_ignore = true, -- don’t respect .gitignore
+        find_files = {
+          layout_strategy = 'bottom_pane',
+          layout_config = {
+            height = 0.5,        -- take half screen from bottom
+            preview_width = 0.6, -- preview on right
+            prompt_position = 'top',
+          },
+          previewer = true, -- force previewer
+          sorting_strategy = 'ascending',
         },
         buffers = {
           sort_lastused = true,
         },
-      }, -- pickers ends
+      },             -- pickers ends
 
       extensions = { -- ext start
         fzf = {
